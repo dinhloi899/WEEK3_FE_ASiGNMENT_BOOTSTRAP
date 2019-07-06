@@ -1,0 +1,18 @@
+tr {
+	border: 1px solid black;
+}
+nav{
+	background: silver;
+}
+.danhmuc
+{
+	color: black;
+	text-decoration: none;
+}
+a{
+	color: black;
+}
+table{
+	border: 2px solid black;
+	border-radius: 100px;
+}
