@@ -24,12 +24,9 @@
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-
 </head>
 <body>
  <div class="container">
-
 	<header><img src="images/banner.png" style="width: 100%"></header>
 	<nav class="navbar navbar-expand-sm navbar-light mb-3">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -54,20 +51,18 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Đăng xuất</a>
 						<a class="dropdown-item" href="#/ChangePass">Đổi mật khẩu</a>
-						<a class="dropdown-item" href="#">Cập nhật tài khoản</a>
+						<a class="dropdown-item" href="#/UpdateInfo">Cập nhật tài khoản</a>
 					</div>
 				</li>
 			</ul>
-
 		</div>
 	</nav>
 
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-8" ng-controller="category-controller" style="margin-left:50px;margin-right:20px">
-				<div ng-view></div>
-
-      </div>
+			<div class="row">
+				<div class="col-md-8" ng-controller="category-controller" style="margin-left:50px;margin-right:20px">
+					<div ng-view></div>
+			</div>
 			<div class="col-md-3" ng-controller="category-controller">
 				<table class="danhmuc" boder = "1" cellpadding="5" cellspacing="0" >
 					<tr>
@@ -76,7 +71,6 @@
 					<tr ng-repeat="category in categories">
 						<td><a href="#/subjects/{{category.Id}}">{{category.Name}}</a></td>
 					</tr>
-
 				</table>
 			</div>
 		</div>
@@ -85,6 +79,7 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/popper.min.js"></script>
+	 
 	<script src="app/app.js"></script>
 </div>
 </body>

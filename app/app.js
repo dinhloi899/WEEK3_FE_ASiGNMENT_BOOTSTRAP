@@ -23,6 +23,9 @@ app.config(function ($routeProvider) {
 	.when('/ChangePass', {
         templateUrl: 'app/pages/changePass.html'
     })
+	.when('/UpdateInfo', {
+        templateUrl: 'app/pages/updateInfo.html'
+    })
 	.when('/subjects',{
 		controller: 'category-controller',
 		templateUrl: 'app/pages/subjects.html'
