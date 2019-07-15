@@ -1,0 +1,9 @@
+<div ng-repeat="quiz in arrQuizs">
+  <div class="question"> <strong>Quiz {{$index + 1}}: {{quiz.Text}}</strong></div>
+  <form class="formQs" ng-name="{{quiz.Id}}" >
+  <div class="question" ng-repeat="answer in quiz.Answers">
+    <input type="radio" ng-model="quiz.Id" name="{{currentSubject}}" ng-value="{{answer.Id}}"/>
+    <label for="{{answer.Id}}">{{answer.Text}}</label><br>
+  </div>
+  </form><br>
+</div>
