@@ -101,7 +101,10 @@ app.controller('loginController',
         angular.forEach($scope.mydata, function(item){
                           if((item.username==$scope.regObj.Username)&&(item.password==$scope.regObj.Password))
                           {
+
                             stat="true";
+                            var url = '#/subjects';
+                            window.location = url;
                             document.getElementById("logginStatus").innerHTML = item.fullname;
                             loginFunction();
                           }
@@ -112,7 +115,7 @@ app.controller('loginController',
         $scope.regObj.Password="";
           if(stat=="true")
           {
-          
+
 
           }
           else
