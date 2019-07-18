@@ -3,24 +3,23 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-	
+
 	<meta charset="UTF-8">
 	<title>Trang Chủ</title>
-	
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
+
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
-	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    
+
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -41,15 +40,15 @@
 			</ul>
 			<ul class="navbar-nav mr-6">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown">
-						Tài Khoản
-					</a>
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="logginStatus">Tài khoản</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#/Register">Đăng kí</a>
-						<a class="dropdown-item" href="#/Login">Đăng nhập</a>
-						<a class="dropdown-item" href="#">Quên mật khẩu</a>
+            <div id="accountArea">
+						<div><a class="dropdown-item" href="#/Register">Đăng kí</a></div>
+						<div><a class="dropdown-item" href="#/Login" >Đăng nhập</a></div>
+						<div><a class="dropdown-item" href="#" >Quên mật khẩu</a></div>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Đăng xuất</a>
+            </div>
+						<a class="dropdown-item" href="#/subjects" id="btnDangXuat" onclick="logOutFunction()"></a>
 						<a class="dropdown-item" href="#/ChangePass">Đổi mật khẩu</a>
 						<a class="dropdown-item" href="#/UpdateInfo">Cập nhật tài khoản</a>
 					</div>
@@ -79,8 +78,9 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/popper.min.js"></script>
-	 
+
 	<script src="app/app.js"></script>
-</div>
+
 </body>
+
 </html>

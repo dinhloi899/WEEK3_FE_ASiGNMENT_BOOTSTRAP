@@ -15,6 +15,7 @@ app.config(function ($routeProvider) {
         templateUrl: 'app/pages/feedback.html'
     })
 	.when('/Login', {
+        controller: 'loginController',
         templateUrl: 'app/pages/login.html'
     })
 	.when('/Register', {
@@ -72,6 +73,85 @@ function($scope, categorys, $routeParams,$http){
     $scope.currentSubjectId = $routeParams.subjectid;
   });
 }]);
+
+
+app.controller('loginController',
+    function ($scope, $http) {
+        var link = "db/Students.js"
+        var request = {
+            method: 'get',
+            url: link,
+            dataType: 'json',
+            contentType: "application/json"
+        };
+
+        $scope.arrStudents = new Array;
+
+        $http(request)
+            .success(function (jsonData) {
+                $scope.arrStudents = jsonData;
+                $scope.list = $scope.arrStudents;
+            })
+            .error(function () {
+
+            });
+        $scope.submit = function() {
+         // alert("SUBMIT "+$scope.regObj.username);
+          var stat="false";
+        angular.forEach($scope.mydata, function(item){
+                          if((item.username==$scope.regObj.Username)&&(item.password==$scope.regObj.Password))
+                          {
+
+                            stat="true";
+                            var url = '#/subjects';
+                            window.location = url;
+                            document.getElementById("logginStatus").innerHTML = item.fullname;
+                            loginFunction();
+                          }
+
+
+                       });
+        $scope.regObj.Username="";
+        $scope.regObj.Password="";
+          if(stat=="true")
+          {
+
+
+          }
+          else
+            alert("Sai tài khoản hoặc mật khẩu!!");
+          };
+
+         $scope.regObj = {
+              "Username" : "",
+              "Password" : ""
+
+            };
+        $scope.mydata;
+          $http.get("db/Students.js")
+          .then(function(response) {
+              $scope.mydata = response.data;
+               angular.forEach($scope.mydata, function(item){
+                          logOutFunction();
+                       })
+
+          });
+    });
+
+    function loginFunction() {
+
+      var accountArea = document.getElementById("accountArea");
+      accountArea.style.display = "none";
+      document.getElementById("btnDangXuat").innerHTML = "Đăng xuất";
+
+    }
+    function logOutFunction() {
+      var accountArea = document.getElementById("accountArea");
+      accountArea.style.display = "block";
+      document.getElementById("btnDangXuat").innerHTML = "";
+      document.getElementById("logginStatus").innerHTML = "Tài khoản";
+
+    }
 
 app.factory('categorys',['$http',
 function($http){
