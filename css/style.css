@@ -103,3 +103,19 @@ button.btnDNDK:hover {
 .stretched-link:hover{
   text-decoration: none;
 }
+
+.paging-quiz{
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+
+.paging-quiz .paging-img {
+	width: 40px;
+	height: 40px;
+	margin: 16px;
+}
+
+.paging-quiz .paging-img:hover {
+	cursor: pointer;
+}
