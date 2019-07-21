@@ -119,3 +119,32 @@ button.btnDNDK:hover {
 .paging-quiz .paging-img:hover {
 	cursor: pointer;
 }
+
+.paging-subject{
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+
+.paging-subject .paging-img {
+	width: 40px;
+	height: 40px;
+	margin: 16px;
+}
+
+.paging-subject .paging-img:hover {
+	cursor: pointer;
+}
+
+.card-columns{
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 10px;
+  padding: 10px;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+}

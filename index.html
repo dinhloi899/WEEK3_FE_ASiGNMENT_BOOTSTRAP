@@ -25,62 +25,61 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
- <div class="container">
-	<header><img src="images/banner.png" style="width: 100%"></header>
-	<nav class="navbar navbar-expand-sm navbar-light mb-3">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#/About">Giới thiệu</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/Contact">Liên hệ</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/Feedback">Góp ý</a></li>
-				<li class="nav-item"><a class="nav-link" href="#/QNA">Hỏi đáp</a></li>
-			</ul>
-			<ul class="navbar-nav mr-6">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="logginStatus">Tài khoản</a>
-					<div class="dropdown-menu">
-            <div id="accountArea">
-						<div><a class="dropdown-item" href="#/Register">Đăng kí</a></div>
-						<div><a class="dropdown-item" href="#/Login" >Đăng nhập</a></div>
-						<div><a class="dropdown-item" href="#" >Quên mật khẩu</a></div>
-						<div class="dropdown-divider"></div>
-            </div>
-						<a class="dropdown-item" href="#/subjects" id="btnDangXuat" onclick="logOutFunction()"></a>
-						<a class="dropdown-item" href="#/ChangePass">Đổi mật khẩu</a>
-						<a class="dropdown-item" href="#/UpdateInfo">Cập nhật tài khoản</a>
+	<div class="container">
+		<header><img src="images/banner.png" style="width: 100%"></header>
+		<nav class="navbar navbar-expand-sm navbar-light mb-3">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="#/About">Giới thiệu</a></li>
+					<li class="nav-item"><a class="nav-link" href="#/Contact">Liên hệ</a></li>
+					<li class="nav-item"><a class="nav-link" href="#/Feedback">Góp ý</a></li>
+					<li class="nav-item"><a class="nav-link" href="#/QNA">Hỏi đáp</a></li>
+				</ul>
+				<ul class="navbar-nav mr-6">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="logginStatus">Tài khoản</a>
+						<div class="dropdown-menu">
+							<div id="accountArea">
+									<div><a class="dropdown-item" href="#/Register">Đăng kí</a></div>
+									<div><a class="dropdown-item" href="#/Login" >Đăng nhập</a></div>
+									<div><a class="dropdown-item" href="#" >Quên mật khẩu</a></div>
+									<div class="dropdown-divider"></div>
+							</div>
+							<a class="dropdown-item" href="#/subjects" id="btnDangXuat" onclick="logOutFunction()"></a>
+							<a class="dropdown-item" href="#/ChangePass">Đổi mật khẩu</a>
+							<a class="dropdown-item" href="#/UpdateInfo">Cập nhật tài khoản</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-8" ng-controller="category-controller" style="margin-left:50px;margin-right:20px">
+						<div ng-view></div>
 					</div>
-				</li>
-			</ul>
+					<div class="col-md-3" ng-controller="category-controller">
+						<table class="danhmuc" boder = "1" cellpadding="5" cellspacing="0" >
+							<tr>
+								<td><i class="fas fa-bars"></i><b> DANH MỤC</b></td>
+							</tr>
+							<tr ng-repeat="category in categories">
+								<td><a href="#/subjects/{{category.Id}}/quiz/0">{{category.Name}}</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
 		</div>
-	</nav>
 
-	<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-8" ng-controller="category-controller" style="margin-left:50px;margin-right:20px">
-					<div ng-view></div>
-			</div>
-			<div class="col-md-3" ng-controller="category-controller">
-				<table class="danhmuc" boder = "1" cellpadding="5" cellspacing="0" >
-					<tr>
-						<td><i class="fas fa-bars"></i><b> DANH MỤC</b></td>
-					</tr>
-					<tr ng-repeat="category in categories">
-						<td><a href="#/subjects/{{category.Id}}/quiz/0">{{category.Name}}</a></td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+
+		<script src="app/app.js"></script>
 	</div>
-
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/popper.min.js"></script>
-
-	<script src="app/app.js"></script>
-
 </body>
-
 </html>

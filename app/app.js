@@ -46,14 +46,13 @@ function($scope,categorys){
   });
 }]);
 
-app.controller('QuizController',['$scope','categorys','$routeParams','$http',
-function($scope, categorys, $routeParams,$http){
+app.controller('QuizController',['$scope','categorys','$routeParams','$http', function($scope, categorys, $routeParams,$http){
   categorys.success(function(data){
 
     var subjectId = $routeParams.subjectid;
     var quizId = $routeParams.quizId;
 
-    var link = "db/Quizs/"+subjectId+".js";
+    var link = "db/Quizs/" + subjectId + ".js";
     var request = {
         method: 'get',
         url: link,
@@ -61,16 +60,15 @@ function($scope, categorys, $routeParams,$http){
         contentType: "application/json"
       };
 
-
   $scope.arrQuizs = new Array;
 
   $http(request)
       .success(function (data) {
-          $scope.arrQuizs = data;
+         $scope.arrQuizs = data;
 
-          $scope.currentSubjectId = $routeParams.subjectid;
+         $scope.currentSubjectId = $routeParams.subjectid;
 
-          $scope.quiz = $scope.arrQuizs[quizId];
+         $scope.quiz = $scope.arrQuizs[quizId];
 
           // Using these properties to create the URLs in line 1 and line 11 of view/chapter.html
          $scope.currentSubjectIndex = subjectId;
@@ -90,16 +88,10 @@ function($scope, categorys, $routeParams,$http){
       .error(function (err) {
         $scope.error = err;
       });
-
-
   });
-
-
 }]);
 
-
-app.controller('loginController',
-    function ($scope, $http) {
+app.controller('loginController', function ($scope, $http) {
         var link = "db/Students.js"
         var request = {
             method: 'get',
@@ -118,71 +110,65 @@ app.controller('loginController',
             .error(function () {
 
             });
+	
         $scope.submit = function() {
          // alert("SUBMIT "+$scope.regObj.username);
           var stat="false";
         angular.forEach($scope.mydata, function(item){
                           if((item.username==$scope.regObj.Username)&&(item.password==$scope.regObj.Password))
                           {
-
                             stat="true";
                             var url = '#/subjects';
                             window.location = url;
                             document.getElementById("logginStatus").innerHTML = item.fullname;
                             loginFunction();
                           }
-
-
                        });
+			
         $scope.regObj.Username="";
         $scope.regObj.Password="";
-          if(stat=="true")
-          {
-
-
-          }
-          else
+			
+        if(stat=="true")
+        {
+			alert("Đăng nhập thành công!!");
+        }
+        else
             alert("Sai tài khoản hoặc mật khẩu!!");
-          };
+        };
 
-         $scope.regObj = {
-              "Username" : "",
-              "Password" : ""
-
-            };
+        $scope.regObj = {
+            "Username" : "",
+            "Password" : ""
+        };
+	
         $scope.mydata;
           $http.get("db/Students.js")
           .then(function(response) {
               $scope.mydata = response.data;
                angular.forEach($scope.mydata, function(item){
-                          logOutFunction();
-                       })
-
+                     logOutFunction();
+               })
           });
     });
-
     function loginFunction() {
-
       var accountArea = document.getElementById("accountArea");
       accountArea.style.display = "none";
       document.getElementById("btnDangXuat").innerHTML = "Đăng xuất";
-
     }
+
     function logOutFunction() {
       var accountArea = document.getElementById("accountArea");
       accountArea.style.display = "block";
       document.getElementById("btnDangXuat").innerHTML = "";
       document.getElementById("logginStatus").innerHTML = "Tài khoản";
-
     }
 
-app.factory('categorys',['$http',
-function($http){
-  return $http.get('db/Subjects.js')
-  .success(function(data){
-    return data;
-  })
-  .error(function(err){
-    return err;
-  });
+app.factory('categorys',['$http', function($http){
+	  return $http.get('db/Subjects.js')
+	  .success(function(data){
+		return data;
+	  })
+	  .error(function(err){
+		return err;
+	  });
 }]);

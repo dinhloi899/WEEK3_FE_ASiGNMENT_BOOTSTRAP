@@ -1,16 +1,20 @@
 <div class="card-columns">
-
-<div ng-repeat="category in categories">
-
-  <div class="card border-secondary mb-3" style="max-width: 20rem;display: inline-block" >
-    <a ng-href="#/subjects/{{category.Id}}/quiz/0" class="stretched-link">
-    <div class="card-body text-secondary" >
-      <img class="card-img-top" ng-src="images/logos/{{category.Logo}}"/>
-    </div>
-    <div class="card-footer"><small class="text-muted"><center> {{category.Name}} </center></small></div>
-</a>
-  </div>
-
+	<div ng-repeat="category in categories | limitTo:4">
+	  <div class="card">
+		<a ng-href="#/subjects/{{category.Id}}/quiz/0" class="stretched-link">
+			<div class="card-body text-secondary" >
+			  <img class="card-img-top" ng-src="images/logos/{{category.Logo}}"/>
+			</div>
+			
+			<div class="card-footer"><small class="text-muted"><center> {{category.Name}} </center></small></div>
+		</a>
+	  </div>
+	</div>
 </div>
 
+<div class="paging-subject" >
+	<img src="images/icons/hand-down.png" alt="start page" class="paging-img" title="Start page"/>
+	<img src="images/icons/hand-left.png" alt="left page" class="paging-img" title="Prev page"/>
+	<img src="images/icons/hand-right.png" alt="right page" class="paging-img" title="Next page"/>
+	<img src="images/icons/hand-up.png" alt="end page" class="paging-img" title="End page"/>
 </div>
