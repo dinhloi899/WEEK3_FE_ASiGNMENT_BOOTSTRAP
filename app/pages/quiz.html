@@ -1,9 +1,15 @@
-<div ng-repeat="quiz in arrQuizs">
-  <div class="question"> <strong>Câu {{$index + 1}}: {{quiz.Text}}</strong></div>
+<div>
+  <div class="question"> <strong>{{quiz.Text}}</strong></div>
   <form class="formQs" ng-name="{{quiz.Id}}" >
   <div class="question" ng-repeat="answer in quiz.Answers">
     <input type="radio" ng-model="quiz.Id" name="{{currentSubject}}" ng-value="{{answer.Id}}"/>
     <label for="{{answer.Id}}">{{answer.Text}}</label><br>
   </div>
   </form><br>
+</div>
+<div class="paging-quiz" >
+    <a href="#/subjects/{{currentSubjectId}}/quiz/0"><img src="../images/icons/hand-down.png" alt="start page" class="paging-img" title="Start page"/></a>
+    <a href="#/subjects/{{currentSubjectIndex}}/quiz/{{prevQuizIndex}}"><img src="../images/icons/hand-left.png" alt="left page" class="paging-img" title="Prev page"/></a>
+    <a href="#/subjects/{{currentSubjectIndex}}/quiz/{{nextQuizIndex}}"><img src="../images/icons/hand-right.png" alt="right page" class="paging-img" title="Next page"/></a>
+    <a href="#/subjects/{{currentSubjectId}}/quiz/{{arrQuizs.length - 1}}"><img src="../images/icons/hand-up.png" alt="end page" class="paging-img" title="End page"/></a>
 </div>

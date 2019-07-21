@@ -31,7 +31,7 @@ app.config(function ($routeProvider) {
 		controller: 'category-controller',
 		templateUrl: 'app/pages/subjects.html'
   	})
-  	.when('/subjects/:subjectid',{
+  	.when('/subjects/:subjectid/quiz/:quizId',{
 		controller: 'QuizController',
 		templateUrl: 'app/pages/quiz.html'
   	})
@@ -51,6 +51,7 @@ function($scope, categorys, $routeParams,$http){
   categorys.success(function(data){
 
     var subjectId = $routeParams.subjectid;
+    var quizId = $routeParams.quizId;
 
     var link = "db/Quizs/"+subjectId+".js";
     var request = {
@@ -66,12 +67,34 @@ function($scope, categorys, $routeParams,$http){
   $http(request)
       .success(function (data) {
           $scope.arrQuizs = data;
+
+          $scope.currentSubjectId = $routeParams.subjectid;
+
+          $scope.quiz = $scope.arrQuizs[quizId];
+
+          // Using these properties to create the URLs in line 1 and line 11 of view/chapter.html
+         $scope.currentSubjectIndex = subjectId;
+         $scope.currentQuizIndex = parseInt($routeParams.quizId );
+         $scope.nextQuizIndex = $scope.currentQuizIndex + 1;
+         $scope.prevQuizIndex = $scope.currentQuizIndex - 1;
+
+         if($routeParams.quizId >= $scope.arrQuizs.length - 1) {
+           $scope.nextQuizIndex -= 1;
+         }
+
+         if($routeParams.quizId <= 0) {
+           $scope.prevQuizIndex+=1;
+         }
+
       })
       .error(function (err) {
         $scope.error = err;
       });
-    $scope.currentSubjectId = $routeParams.subjectid;
+
+
   });
+
+
 }]);
 
 
