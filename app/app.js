@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']); //ngRoute dependency injection
+var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap.tpls', 'ui.bootstrap.pagination']); //ngRoute dependency injection
 
 app.config(function ($routeProvider) {
     $routeProvider.
@@ -42,8 +42,11 @@ app.config(function ($routeProvider) {
 app.controller('category-controller',['$scope','categorys',
 function($scope,categorys){
   categorys.success(function(data){
-    $scope.categories = data;
-  });
+      $scope.categories = data;
+	  $scope.pageSize = 4;
+	  $scope.currentPage = 1;
+	  $scope.totalItems = $scope.categories.length;
+});
 }]);
 
 app.controller('QuizController',['$scope','categorys','$routeParams','$http', function($scope, categorys, $routeParams,$http){
@@ -150,18 +153,19 @@ app.controller('loginController', function ($scope, $http) {
                })
           });
     });
-    function loginFunction() {
-      var accountArea = document.getElementById("accountArea");
-      accountArea.style.display = "none";
-      document.getElementById("btnDangXuat").innerHTML = "Đăng xuất";
-    }
 
-    function logOutFunction() {
-      var accountArea = document.getElementById("accountArea");
-      accountArea.style.display = "block";
-      document.getElementById("btnDangXuat").innerHTML = "";
-      document.getElementById("logginStatus").innerHTML = "Tài khoản";
-    }
+function loginFunction() {
+    var accountArea = document.getElementById("accountArea");
+    accountArea.style.display = "none";
+    document.getElementById("btnDangXuat").innerHTML = "Đăng xuất";
+}
+
+function logOutFunction() {
+    var accountArea = document.getElementById("accountArea");
+    accountArea.style.display = "block";
+    document.getElementById("btnDangXuat").innerHTML = "";
+    document.getElementById("logginStatus").innerHTML = "Tài khoản";
+}
 
 app.factory('categorys',['$http', function($http){
 	  return $http.get('db/Subjects.js')

@@ -141,10 +141,18 @@ button.btnDNDK:hover {
   grid-template-columns: 300px 300px;
   grid-gap: 10px;
   padding: 10px;
-  text-align: center;
   margin-left: 40px;
 }
 
 .grid-container > div {
   padding: 20px 0;
+}
+
+.phantrang{
+	padding-left: 85px;
+}
+
+.phantrang a{
+	color: blue;
+	padding: 20px;
 }

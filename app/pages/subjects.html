@@ -1,5 +1,5 @@
-<div class="card-columns">
-	<div ng-repeat="category in categories | limitTo:4">
+<div class="card-columns" ng-controller="category-controller">
+	<div ng-repeat="category in categories | limitTo : pageSize : (currentPage - 1) * pageSize track by category.Id" ng-class="{lastItem: $last}">
 	  <div class="card">
 		<a ng-href="#/subjects/{{category.Id}}/quiz/0" class="stretched-link">
 			<div class="card-body text-secondary" >
@@ -10,11 +10,6 @@
 		</a>
 	  </div>
 	</div>
-</div>
-
-<div class="paging-subject" >
-	<img src="images/icons/hand-down.png" alt="start page" class="paging-img" title="Start page"/>
-	<img src="images/icons/hand-left.png" alt="left page" class="paging-img" title="Prev page"/>
-	<img src="images/icons/hand-right.png" alt="right page" class="paging-img" title="Next page"/>
-	<img src="images/icons/hand-up.png" alt="end page" class="paging-img" title="End page"/>
-</div>
+	
+	<ul class="phantrang" uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize"></ul>
+</div>s
