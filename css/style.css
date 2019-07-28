@@ -11,7 +11,7 @@ table{
 	border: 2px solid black;
 	border-radius: 100px;
 }
-form {
+form.loginup{
   box-sizing: border-box;
   width: 260px;
   margin: 20px auto 0;
@@ -20,10 +20,10 @@ form {
   border-radius: 3px;
 }
 
-form.formQs {
-  box-sizing: border-box;
+form .formQs {
+  box-sizing: 0;
   width: auto;
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   padding-top: 10px;
   padding-bottom: 3px;
   padding-left: 20px;
@@ -155,4 +155,36 @@ button.btnDNDK:hover {
 .phantrang a{
 	color: blue;
 	padding: 20px;
+}
+
+.answer_true {
+	background-color:green;
+	color: white;
+}
+
+.answer_item{
+	display: block;
+	padding-top: 5px;
+}
+.answer_false {
+	background-color: red;
+	color: white;
+}
+
+.chosen_true {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	color: black;
+}
+
+#clockQuiz{
+	float: right;
+	background: #0099FF;
+	border-radius: 15px;
+	padding: 4px 8px;
+	width: 50px;
+	height: 32px;
+	color: white;
+	text-align: center;
 }

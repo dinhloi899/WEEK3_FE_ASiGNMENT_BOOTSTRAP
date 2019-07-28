@@ -49,51 +49,6 @@ function($scope,categorys){
 });
 }]);
 
-app.controller('QuizController',['$scope','categorys','$routeParams','$http', function($scope, categorys, $routeParams,$http){
-  categorys.success(function(data){
-
-    var subjectId = $routeParams.subjectid;
-    var quizId = $routeParams.quizId;
-
-    var link = "db/Quizs/" + subjectId + ".js";
-    var request = {
-        method: 'get',
-        url: link,
-        dataType: 'json',
-        contentType: "application/json"
-      };
-
-  $scope.arrQuizs = new Array;
-
-  $http(request)
-      .success(function (data) {
-         $scope.arrQuizs = data;
-
-         $scope.currentSubjectId = $routeParams.subjectid;
-
-         $scope.quiz = $scope.arrQuizs[quizId];
-
-          // Using these properties to create the URLs in line 1 and line 11 of view/chapter.html
-         $scope.currentSubjectIndex = subjectId;
-         $scope.currentQuizIndex = parseInt($routeParams.quizId );
-         $scope.nextQuizIndex = $scope.currentQuizIndex + 1;
-         $scope.prevQuizIndex = $scope.currentQuizIndex - 1;
-
-         if($routeParams.quizId >= $scope.arrQuizs.length - 1) {
-           $scope.nextQuizIndex -= 1;
-         }
-
-         if($routeParams.quizId <= 0) {
-           $scope.prevQuizIndex+=1;
-         }
-
-      })
-      .error(function (err) {
-        $scope.error = err;
-      });
-  });
-}]);
-
 app.controller('loginController', function ($scope, $http) {
         var link = "db/Students.js"
         var request = {
@@ -113,7 +68,7 @@ app.controller('loginController', function ($scope, $http) {
             .error(function () {
 
             });
-	
+
         $scope.submit = function() {
          // alert("SUBMIT "+$scope.regObj.username);
           var stat="false";
@@ -127,10 +82,10 @@ app.controller('loginController', function ($scope, $http) {
                             loginFunction();
                           }
                        });
-			
+
         $scope.regObj.Username="";
         $scope.regObj.Password="";
-			
+
         if(stat=="true")
         {
 			alert("Đăng nhập thành công!!");
@@ -143,7 +98,7 @@ app.controller('loginController', function ($scope, $http) {
             "Username" : "",
             "Password" : ""
         };
-	
+
         $scope.mydata;
           $http.get("db/Students.js")
           .then(function(response) {
