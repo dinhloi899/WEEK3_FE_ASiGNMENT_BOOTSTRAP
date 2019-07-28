@@ -1,11 +1,24 @@
-<div>
-  <div class="question"> <strong>{{quiz.Text}}</strong></div>
-  <form class="formQs" ng-name="{{quiz.Id}}" >
-  <div class="question" ng-repeat="answer in quiz.Answers">
-    <input type="radio" ng-model="quiz.Id" name="{{currentSubject}}" ng-value="{{answer.Id}}"/>
-    <label for="{{answer.Id}}">{{answer.Text}}</label><br>
+<div  class="card">
+   <div class="card-header">
+     <i class="material-icons" style="position:absolute;">school</i><strong style="margin-left:30px">{{subjectName}}</strong>
+     <span id="clockQuiz">{{min}}:{{sec}}</span>
+   </div>
+   <div class="card-body">
+      <div class="question" style="">{{currentQuiz}}. {{quiz.Text}}</div><hr />
+      <form class=" chosen_{{chosen}}" ng-name="{{quiz.Id}}"  >
+      <div class="question" ng-repeat="answer in quiz.Answers">
+        <div class="answer_item  answer_{{checkAnswer[$index]}}">
+          <input type="radio" ng-model="quiz.Id" name="{{currentSubject}}" ng-value="{{answer.Id}}" ng-click = 'checkAnswerUser(quizId,answer.Id)' />
+          <label for="{{answer.Id}}">{{answer.Text}}</label><br>
+          {{checked[$index]}}
+        </div>
+
+      </div>
+      </form><br>
+
   </div>
-  </form><br>
+<div class="card-footer">MARKS: {{correctCount}} / {{arrQuizs.length}}</div>
+
 </div>
 <div class="paging-quiz" >
     <a href="#/subjects/{{currentSubjectId}}/quiz/0"><img src="images/icons/hand-down.png" alt="start page" class="paging-img" title="Start page"/></a>
